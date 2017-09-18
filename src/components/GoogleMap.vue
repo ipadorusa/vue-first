@@ -12,6 +12,14 @@ export default {
       lon: 126.97769
     }
   },
+  methods: {
+    sendCoordinate () {
+      this.$bus.$emit('sendCoordinate', {
+        lat: this.lat,
+        lon: this.lon
+      })
+    }
+  },
   mounted () {
     /* global google */
     var center = new google.maps.LatLng(37.566535, 126.97769)
@@ -31,11 +39,10 @@ export default {
     map.addListener('dragend', () => {
       this.lat = map.getCenter().lat()
       this.lng = map.getCenter().lng()
-      this.$bus.$emit('sendCoordinate', {
-        lat: this.lat,
-        lng: this.lng
-      })
+      this.sendCoordinate()
     })
+
+    this.sendCoordinate()
   }
 
 }

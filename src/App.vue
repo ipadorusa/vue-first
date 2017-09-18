@@ -4,7 +4,10 @@
       <div id="current-weather">
         <current-weather></current-weather>
       </div>
-      <div id="forecast"></div>
+      <hr>
+      <div id="forecast">
+        <forecast></forecast>
+      </div>
     </div>
     <div id="map">
       <google-map></google-map>
@@ -15,11 +18,13 @@
 <script>
 import CurrentWeather from '@/components/CurrentWeather'
 import GoogleMap from '@/components/GoogleMap'
+import Forecast from '@/components/Forecast'
 export default {
   name: 'app',
   components: {
     CurrentWeather,
-    GoogleMap
+    GoogleMap,
+    Forecast
   }
 }
 </script>
@@ -46,6 +51,13 @@ export default {
     display:block;
     clear: both;
   }
+  hr {
+    width: 80%;
+    margin: 80px auto;
+    border:none;
+    border-top:1px solid white;
+  }
+
   #app > #infomation {
     float: left;
     width:600px;
@@ -55,7 +67,6 @@ export default {
     margin-top:20px;
   }
   #app > #infomation > #forecast {
-    background-color:red;
     height: 400px;
   }
   #app > #map {

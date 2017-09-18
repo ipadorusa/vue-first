@@ -17,28 +17,32 @@ export default {
       lon: 126.977969
     }
   },
+  methods: {
+    setCoordinate (coordinate) {
+      this.lat = coordinate.lat
+      this.lon = coordinate.lon
+
+      this.axios.get('http://api.openweathermap.org/data/2.5/weather', {
+        params: {
+          lat: this.lat,
+          lon: this.lon,
+          APPID: '4af00da88b59b73f333a28245c40f5ce'
+        }
+      })
+      .then(response => {
+        let data = response.data
+        this.location = data.name
+        this.weather = data.weather[0].main
+        this.temp = (data.main.temp - 273.15).toFixed(0)
+      })
+    }
+  },
   mounted () {
-    this.$bus.$on('sendCoordinate', (payload) => {
-      console.log(payload)
-    })
-    this.axios.get('http://api.openweathermap.org/data/2.5/weather', {
-      params: {
-        lat: this.lat,
-        lon: this.lon,
-        APPID: '4af00da88b59b73f333a28245c40f5ce'
-      }
-    })
-    .then(response => {
-      let data = response.data
-      console.log(data)
-      this.location = data.name
-      this.weather = data.weather[0].main
-      this.temp = (data.main.temp - 273.15).toFixed(0)
-    })
+    this.$bus.$on('sendCoordinate', this.setCoordinate)
   }
 }
 </script>
-<style>
+<style scoped>
   .location {
     text-align:center;
     font-size:40pt;
