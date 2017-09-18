@@ -18,6 +18,9 @@ export default {
     }
   },
   mounted () {
+    this.$bus.$on('sendCoordinate', (payload) => {
+      console.log(payload)
+    })
     this.axios.get('http://api.openweathermap.org/data/2.5/weather', {
       params: {
         lat: this.lat,

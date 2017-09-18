@@ -6,16 +6,20 @@
       </div>
       <div id="forecast"></div>
     </div>
-    <div id="map"></div>
+    <div id="map">
+      <google-map></google-map>
+    </div>
   </div>
 </template>
 
 <script>
-import CurrentWeather from './components/CurrentWeather'
+import CurrentWeather from '@/components/CurrentWeather'
+import GoogleMap from '@/components/GoogleMap'
 export default {
   name: 'app',
   components: {
-    CurrentWeather
+    CurrentWeather,
+    GoogleMap
   }
 }
 </script>
@@ -58,6 +62,5 @@ export default {
     float: right;
     width:400px;
     height: 600px;
-    background-color:green;
   }
 </style>
