@@ -26,6 +26,21 @@
     methods: {
       convertToDate (timestamp) {
         return new Date(timestamp * 1000)
+      },
+      setCoordinate (coordinate) {
+        this.lat = coordinate.lat
+        this.lon = coordinate.lng
+        this.axios.get('http://api.openweathermap.org/data/2.5/forecast/daily', {
+          params: {
+            lat: this.lat,
+            lon: this.lon,
+            APPID: 'eab4311e5e5753ec5a8fe15d2c12b300'
+          }
+        })
+        .then(response => {
+          const data = response.data
+          this.forecasts = data.list
+        })
       }
     },
     filters: {
@@ -35,26 +50,17 @@
       }
     },
     mounted () {
-      this.axios.get('http://api.openweathermap.org/data/2.5/forecast/daily', {
-        params: {
-          lat: this.lat,
-          lon: this.lon,
-          APPID: 'eab4311e5e5753ec5a8fe15d2c12b300'
-        }
-      })
-      .then(response => {
-        const data = response.data
-        this.forecasts = data.list
-      })
+      this.$bus.$on('sendCoordinate', this.setCoordinate)
     }
   }
 </script>
+
 <style scoped>
   .forecasts {
     display: flex;
-    width:80%;
-    padding:0;
-    margin:0 auto;
+    width: 80%;
+    padding: 0;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
   }
@@ -65,20 +71,19 @@
     text-align: center;
     list-style-type: none;
   }
-  .forecasts > li.item:first-child::before {
-    content:'';
+  .forecasts > li.item:first-child:before {
+    content: '';
     position: absolute;
-    top:-10px;
+    top: -10px;
     left: 50%;
     display: block;
-    width:6px;
+    width: 6px;
     height: 6px;
     margin-left: -3px;
     border-radius: 50%;
-    background-color:red;
+    background-color: red;
   }
   .forecasts > li.item > .temp {
-    margin-top: -8px
+    margin-top: -8px;
   }
 </style>
-
