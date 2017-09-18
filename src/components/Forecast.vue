@@ -30,11 +30,12 @@
       setCoordinate (coordinate) {
         this.lat = coordinate.lat
         this.lon = coordinate.lng
-        this.axios.get('http://api.openweathermap.org/data/2.5/forecast/daily', {
+
+        this.axios.get('https://api.openweathermap.org/data/2.5/forecast/daily', {
           params: {
             lat: this.lat,
             lon: this.lon,
-            APPID: 'eab4311e5e5753ec5a8fe15d2c12b300'
+            APPID: 'c5d698f455ddeab167e90c6f9a276f3e'
           }
         })
         .then(response => {
@@ -54,7 +55,6 @@
     }
   }
 </script>
-
 <style scoped>
   .forecasts {
     display: flex;
