@@ -1,5 +1,7 @@
 # vue-first
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/ipadorusa/vue-first.svg)](https://greenkeeper.io/)
+
 > A Vue.js project
 
 ## Build Setup
