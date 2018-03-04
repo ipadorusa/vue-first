@@ -45,7 +45,7 @@
     "http-proxy-middleware": "^0.17.3",
     "node-sass": "^4.5.3",
     "opn": "^5.1.0",
-    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "optimize-css-assets-webpack-plugin": "^4.0.0",
     "ora": "^1.2.0",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.6",
