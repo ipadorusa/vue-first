@@ -13,7 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "vue": "^2.4.4",
-    "vue-axios": "^2.0.2"
+    "vue-axios": "^2.1.5"
   },
   "devDependencies": {
     "autoprefixer": "^8.6.5",
